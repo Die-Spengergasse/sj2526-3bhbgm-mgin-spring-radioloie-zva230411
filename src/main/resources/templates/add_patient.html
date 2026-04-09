@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <title>add new patient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+
+        .container{
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+
+    </style>
 </head>
 <body>
     <div class="container">
         <form th:action="@{/patient/add}" th:object="${patient}" method="post">
-            <input type="text" th:field="*{name}" class="form-control" placeholder="patient name">
-            birth date <input type="date" th:field="*{birth}" class="form-control">
-            <input type="submit" class="form-control" value="Save">
+
+            <div class="container mt-5">
+                Name<input type="text" th:field="*{name}" class="form-control" placeholder="patient name">
+            </div>
+            <div class="container mt-5">
+                Surname<input type="text" th:field="*{surname}" class="form-control" placeholder="patient surname">
+            </div>
+            <div class="container mt-5">
+                Social security number<input type="text" th:field="*{ssn}" class="form-control" placeholder="patient ssn">
+            </div>
+            <div class="container mt-5">
+                Gender
+                <select th:field="*{gender}" class="form-control">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Divers">Divers</option>
+                </select>
+            </div>
+            <div class="container mt-5">
+                Birthdate<input type="date" th:field="*{birth}" class="form-control">
+            </div>
+            <div class="container mt-5">
+                <input type="submit" class="form-control" value="Save">
+            </div>
         </form>
     </div>
 </body>
