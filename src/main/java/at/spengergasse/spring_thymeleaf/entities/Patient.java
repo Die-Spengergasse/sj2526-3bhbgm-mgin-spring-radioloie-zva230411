@@ -19,6 +19,9 @@ public class Patient {
     private String surname;
     private String gender;
 
+    @OneToOne(mappedBy = "patient")
+    private Device device;
+
     public String getName() {
         return name;
     }
