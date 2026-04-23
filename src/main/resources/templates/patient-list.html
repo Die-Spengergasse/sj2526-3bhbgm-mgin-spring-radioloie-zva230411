@@ -1,38 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Patients List</title>
+    <title>patient list</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
+
 <div class="container">
-    <table class="table">
-        <thead>
+
+    <h1>Patient list</h1>
+
+    <div class="container mt-5">
+
+        <table class="table table-bordered table-striped">
+            <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Social security number</th>
+                <th>SSN</th>
                 <th>Gender</th>
                 <th>Birthdate</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr th:each="p : ${patients}">
+                <td th:text="${p.id}"></td>
                 <td th:text="${p.name}"></td>
                 <td th:text="${p.surname}"></td>
                 <td th:text="${p.ssn}"></td>
                 <td th:text="${p.gender}"></td>
                 <td th:text="${p.birth}"></td>
-
             </tr>
-        </tbody>
+            </tbody>
+        </table>
 
-    </table>
+    </div>
+
+    <div class="container mt-5">
+        <a th:href="@{/patient/add}" class="btn btn-default">Add new patient</a>
+    </div>
 
     <div class="container mt-5">
         <a href="/" class="btn btn-default">Back</a>
     </div>
+
 </div>
+
 </body>
 </html>

@@ -2,37 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Radiologie Institut</title>
+    <title>Radiology Institute</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>Radiologie Institut</h1>
+    <h1>Radiology Institute</h1>
 
     <p>
-        Datum: <strong th:text="${today}"></strong>
+        Date: <strong th:text="${today}"></strong>
     </p>
 
     <hr>
 
-    <h3>Patienten</h3>
+    <h3>Patients</h3>
     <div class="list-group">
-        <a href="/patient/list" class="list-group-item">Patientenliste anzeigen</a>
-        <a href="/patient/add" class="list-group-item">Neuen Patienten registrieren</a>
+        <a href="/patient/list" class="list-group-item">View patient list</a>
+        <a href="/patient/add" class="list-group-item">Register new patient</a>
     </div>
 
-    <h3>Geräte</h3>
+    <h3>Devices</h3>
     <div class="list-group">
-        <a href="/device/list" class="list-group-item">Geräteliste anzeigen</a>
-        <a href="/device/add" class="list-group-item">Neues Gerät hinzufügen</a>
+        <a href="/device/list" class="list-group-item">View device list</a>
+        <a href="/device/add" class="list-group-item">Add new device</a>
     </div>
 
-    <h3>Reservierungen</h3>
+    <h3>Reservations</h3>
     <div class="list-group">
-        <a href="/reservation/add" class="list-group-item">Neue Reservierung erfassen</a>
-        <a href="/reservation/list" class="list-group-item">Reservierungsliste anzeigen</a>
+        <a href="/reservation/list" class="list-group-item">View reservation list</a>
+        <a href="/reservation/add" class="list-group-item">Create new reservation</a>
     </div>
 
 </div>
