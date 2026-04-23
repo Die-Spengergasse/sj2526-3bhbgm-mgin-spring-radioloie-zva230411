@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reservation list</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Reservation list</h1>
+
+    <form th:action="@{/reservation/list}" method="get">
+
+        <div class="container mt-5">
+            Device
+            <select id="deviceId" name="deviceId" class="form-control">
+                <option value="">-- Select Device --</option>
+                <option th:each="device : ${devices}"
+                        th:value="${device.id}"
+                        th:text="${device.type + ' - Room ' + device.roomnumber}">
+                </option>
+            </select>
+        </div>
+
+        <div class="container mt-5">
+            <input type="submit" class="form-control" value="Show">
+        </div>
+
+    </form>
+
+    <div class="container mt-5">
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Device</th>
+                <th>Start time</th>
+                <th>End time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reservation : ${reservations}">
+                <td th:text="${reservation.id}"></td>
+                <td th:text="${reservation.patient.name + ' ' + reservation.patient.surname}"></td>
+                <td th:text="${reservation.device.type + ' - Room ' + reservation.device.roomnumber}"></td>
+                <td th:text="${reservation.startTime}"></td>
+                <td th:text="${reservation.endTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="container mt-5">
+        <a th:href="@{/reservation/add}" class="btn btn-default">New reservation</a>
+    </div>
+
+    <div class="container mt-5">
+        <a href="/" class="btn btn-default">Back</a>
+    </div>
+
+</div>
+
+</body>
+</html>

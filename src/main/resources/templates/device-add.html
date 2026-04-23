@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add new device</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form th:action="@{/device/add}" th:object="${device}" method="post">
+
+        <div class="container mt-5">
+            Type
+            <input type="text" th:field="*{type}" class="form-control" placeholder="device type (MR, CT, ...)" required>
+        </div>
+
+        <div class="container mt-5">
+            Room number
+            <input type="number" th:field="*{roomnumber}" class="form-control" placeholder="room number" required>
+        </div>
+
+        <div class="container mt-5">
+            <input type="submit" class="form-control" value="Save">
+        </div>
+
+        <div class="container mt-5">
+            <a th:href="@{/device/list}" class="btn btn-default">Back to device list</a>
+        </div>
+
+        <div class="container mt-5">
+            <a href="/" class="btn btn-default">Back</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

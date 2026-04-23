@@ -1,6 +1,7 @@
 package at.spengergasse.spring_thymeleaf.controllers;
 
 
+import at.spengergasse.spring_thymeleaf.entities.Device;
 import at.spengergasse.spring_thymeleaf.entities.DeviceRepository;
 import at.spengergasse.spring_thymeleaf.entities.Patient;
 import at.spengergasse.spring_thymeleaf.entities.PatientRepository;
@@ -22,9 +23,21 @@ public class DeviceController {
     }
 
     @GetMapping("/list")
-    public String patients(Model model) {
-        model.addAttribute("patients", deviceRepository.findAll());
-        return "patlist";
+    public String showDeviceList(Model model) {
+        model.addAttribute("devices", deviceRepository.findAll());
+        return "device-list";
+    }
+
+    @GetMapping("/add")
+    public String showAddDeviceForm(Model model) {
+        model.addAttribute("device", new Device());
+        return "device-add";
+    }
+
+    @PostMapping("/add")
+    public String saveDevice(@ModelAttribute Device device) {
+        deviceRepository.save(device);
+        return "redirect:/device/list";
     }
 
 }

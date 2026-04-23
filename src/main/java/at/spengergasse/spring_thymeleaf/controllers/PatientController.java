@@ -23,13 +23,13 @@ public class PatientController {
     @GetMapping("/list")
     public String patients(Model model) {
         model.addAttribute("patients", patientRepository.findAll());
-        return "patlist";
+        return "patient-list";
     }
 
     @GetMapping("/add")
     public String addPatient(Model model) {
         model.addAttribute("patient", new Patient());
-        return "add_patient";
+        return "patient-add";
     }
 
     @PostMapping("/add")

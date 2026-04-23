@@ -1,17 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Greeting</title>
+    <title>add new reservation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <h1>Hallo</h1>
-    Datum: <span th:text="${today}"></span>
-    <div>
-        <a href="/patient/list">patient list</a>
-    </div>
+    <form th:action="@{/reservation/add}" th:object="${reservation}" method="post">
+
+        <div class="container mt-5">
+            Patient
+            <select id="patientId" name="patientId" class="form-control" required>
+                <option value="">-- Select Patient --</option>
+                <option th:each="patient : ${patients}"
+                        th:value="${patient.id}"
+                        th:text="${patient.name + ' ' + patient.surname}">
+                </option>
+            </select>
+        </div>
+
+        <div class="container mt-5">
+            Device
+            <select id="deviceId" name="deviceId" class="form-control" required>
+                <option value="">-- Select Device --</option>
+                <option th:each="device : ${devices}"
+                        th:value="${device.id}"
+                        th:text="${device.type + ' - Room ' + device.roomnumber}">
+                </option>
+            </select>
+        </div>
+
+        <div class="container mt-5">
+            Start time
+            <input type="datetime-local" id="startTime" th:field="*{startTime}" class="form-control" required>
+        </div>
+
+        <div class="container mt-5">
+            End time
+            <input type="datetime-local" id="endTime" th:field="*{endTime}" class="form-control" required>
+        </div>
+
+        <div class="container mt-5">
+            <input type="submit" class="form-control" value="Save">
+        </div>
+
+        <div class="container mt-5">
+            <a th:href="@{/reservation/list}" class="btn btn-default">Reservation list</a>
+        </div>
+
+        <div class="container mt-5">
+            <a href="/" class="btn btn-default">Back</a>
+        </div>
+
+    </form>
 </div>
 </body>
 </html>

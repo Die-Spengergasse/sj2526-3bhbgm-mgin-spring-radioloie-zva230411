@@ -3,7 +3,8 @@ package at.spengergasse.spring_thymeleaf.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -19,8 +20,8 @@ public class Patient {
     private String surname;
     private String gender;
 
-    @OneToOne(mappedBy = "patient")
-    private Device device;
+    @OneToMany(mappedBy = "patient")
+    private List<Reservation> reservations = new ArrayList<>();
 
     public String getName() {
         return name;
